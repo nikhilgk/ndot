@@ -115,9 +115,8 @@ source "$DOTZSH/init.zsh"
 
 ### Customize to your needs...
 
-#autoload -Uz promptinit
-#promptinit
-#prompt steeef
 
-
+########Nikhil's aliases
 alias less='less -+X' 
+alias gitlog='noglob git log --abbrev-commit   --branches=* --graph --decorate --pretty=format:"%Cgreen%h %Creset%ar %Cgreen%aD  %Cred%an %C(red)%d %Creset%s"'
+#noglob to prevent zsh from interpretting the * as wildcard for the shell
