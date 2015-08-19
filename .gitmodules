@@ -10,3 +10,35 @@
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "zsh/.zsh/modules/history-substring-search/external"]
+	path = zsh/.zsh/modules/history-substring-search/external
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule "zsh/.zsh/modules/syntax-highlighting/external"]
+	path = zsh/.zsh/modules/syntax-highlighting/external
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/.zsh/modules/completion/external"]
+	path = zsh/.zsh/modules/completion/external
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "zsh/.zsh/modules/auto-fu/external"]
+	path = zsh/.zsh/modules/auto-fu/external
+	url = https://github.com/hchbaw/auto-fu.zsh.git
+[submodule "zsh/.zsh/modules/fasd/external"]
+	path = zsh/.zsh/modules/fasd/external
+	url = https://github.com/clvv/fasd.git
+[submodule "zsh/.zsh/modules/zaw/external"]
+	path = zsh/.zsh/modules/zaw/external
+	url = https://github.com/zsh-users/zaw
+[submodule "zsh/.zsh/modules/autoenv/external"]
+	path = zsh/.zsh/modules/autoenv/external
+	url = https://github.com/kennethreitz/autoenv
+[submodule "zsh/.zsh/modules/aliaster"]
+	path = zsh/.zsh/modules/aliaster
+	url = https://github.com/wesalvaro/Aliaster.git
+[submodule "zsh/.zsh/modules/autosuggestions/external"]
+	path = zsh/.zsh/modules/autosuggestions/external
+	url = https://github.com/tarruda/zsh-autosuggestions.git
+[submodule "zsh/.zsh/modules/docker/external"]
+	path = zsh/.zsh/modules/docker/external
+	url = https://github.com/felixr/docker-zsh-completion.git
+
+  
