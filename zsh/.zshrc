@@ -115,6 +115,9 @@ source "$DOTZSH/init.zsh"
 
 ### Customize to your needs...
 
+#less code highlight
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
 
 ########Nikhil's aliases
 alias less='less -+X' 
