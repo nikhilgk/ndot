@@ -4,4 +4,4 @@ cd
 git clone --recursive https://github.com/nikhilgk/ndot ~/ndot
 cd ~/ndot
 ./basic.sh
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $(whoami)
