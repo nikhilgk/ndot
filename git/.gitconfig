@@ -3,3 +3,11 @@
 	name = Nikhil Kurup
 [push]
 	default = simple
+[alias]
+    watch = "!clear;inotifywait --quiet -mr -e modify,move,create,delete --format \"%f %e\" @/.git . | \
+while read file; do \
+    clear;\
+    git status --short;\
+    git --no-pager diff --shortstat;\
+    sleep 2;\
+done;"
