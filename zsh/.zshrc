@@ -54,7 +54,7 @@ zstyle ':dotzsh:module:terminal' auto-title 'yes'
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':dotzsh:module:editor' keymap 'emacs'
 # Set EDITOR to 'emacs' or 'vi'.
-zstyle ':dotzsh:module:editor' editor 'vi'
+zstyle ':dotzsh:module:editor' editor 'nano'
 # Auto convert .... to ../..
 #zstyle ':dotzsh:module:editor' dot-expansion 'yes'
 
