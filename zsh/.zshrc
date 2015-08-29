@@ -121,5 +121,13 @@ export LESS=' -R '
 
 ########Nikhil's aliases
 alias less='less -+X' 
+alias nps='ps -aef | grep'
+alias nkill='killall -9'
 alias gitlog='noglob git log --abbrev-commit   --branches=* --graph --decorate --pretty=format:"%Cgreen%h %Creset%ar %Cgreen%aD  %Cred%an %C(red)%d %Creset%s"'
 #noglob to prevent zsh from interpretting the * as wildcard for the shell
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/home/nikhil/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/home/nikhil/google-cloud-sdk/completion.zsh.inc'
