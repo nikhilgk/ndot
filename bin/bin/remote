@@ -1,5 +1,15 @@
 #!/bin/bash
 
+
+if [ $# -eq 0 ]; 
+    then echo "Usage remote -[ens] IP or Hostname, 
+    e - launch editor
+    n - launch nemo
+    s - launch ssh
+    Note: Order of options is important"
+    exit
+fi
+
 eval "host=\$$#"
 MDIR=~/remote/$host 
 fusermount -u $MDIR

@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get -y install zsh git-core stow source-highlight
+sudo apt-get -y install zsh git-core stow source-highlight nano
 cd
 git clone --recursive https://github.com/nikhilgk/ndot ~/ndot
 cd ~/ndot
