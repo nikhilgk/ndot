@@ -1,0 +1,31 @@
+#!/bin/bash
+
+eval "host=\$$#"
+MDIR=~/remote/$host 
+fusermount -u $MDIR
+mkdir -p $MDIR
+sshfs $host:/ $MDIR
+while getopts ":esn" opt; do
+  case $opt in
+    e)
+      subl $MDIR/home/nikhil/
+      # echo "-e was triggered, Parameter: $OPTARG" >&2
+      ;;
+    s)
+      ssh $host
+      # echo "-s was triggered, Parameter: $OPTARG" >&2
+      ;;
+    n)
+      nemo $MDIR
+      # echo "-n was triggered, Parameter: $OPTARG" >&2
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
