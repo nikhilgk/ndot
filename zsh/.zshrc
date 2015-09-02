@@ -123,6 +123,7 @@ export LESS=' -R '
 alias less='less -+X' 
 alias nps='ps -aef | grep'
 alias nkill='killall -9'
+alias sshpw='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no '
 alias gitlog='noglob git log --abbrev-commit   --branches=* --graph --decorate --pretty=format:"%Cgreen%h %Creset%ar %Cgreen%aD  %Cred%an %C(red)%d %Creset%s"'
 #noglob to prevent zsh from interpretting the * as wildcard for the shell
 
