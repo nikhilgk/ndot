@@ -119,7 +119,10 @@ source "$DOTZSH/init.zsh"
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
-########Nikhil's aliases
+########Nikhil's changes
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 alias less='less -+X' 
 alias nps='ps -aef | grep'
 alias nkill='killall -9'
