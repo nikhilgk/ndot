@@ -132,3 +132,7 @@ source '/home/nikhil/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/home/nikhil/google-cloud-sdk/completion.zsh.inc'
+
+# Support for command not found
+source '/etc/zsh_command_not_found'
+
