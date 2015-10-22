@@ -14,7 +14,7 @@ eval "host=\$$#"
 MDIR=~/remote/$host 
 fusermount -u $MDIR
 mkdir -p $MDIR
-sshfs $host:/ $MDIR
+sshfs -o cache=yes -o kernel_cache -o compression=yes -o large_read -o Ciphers=arcfour $host:/ $MDIR
 while getopts ":esn" opt; do
   case $opt in
     e)
