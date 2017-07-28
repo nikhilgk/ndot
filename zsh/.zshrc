@@ -132,10 +132,10 @@ alias ncls='printf "\033c"'
 #noglob to prevent zsh from interpretting the * as wildcard for the shell
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/home/nikhil/google-cloud-sdk/path.zsh.inc'
+#source '/home/nikhil/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
-source '/home/nikhil/google-cloud-sdk/completion.zsh.inc'
+#source '/home/nikhil/google-cloud-sdk/completion.zsh.inc'
 
 # Support for command not found
 source '/etc/zsh_command_not_found'
