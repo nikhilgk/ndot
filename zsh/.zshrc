@@ -139,3 +139,4 @@ source '/home/nikhil/google-cloud-sdk/completion.zsh.inc'
 # Support for command not found
 source '/etc/zsh_command_not_found'
 
+alias howp='how2 -l python'
