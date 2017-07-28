@@ -128,6 +128,7 @@ alias nps='ps -aef | grep'
 alias nkill='killall -9'
 alias sshpw='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no '
 alias gitlog='noglob git log --abbrev-commit   --branches=* --graph --decorate --pretty=format:"%Cgreen%h %Creset%ar %Cgreen%aD  %Cred%an %C(red)%d %Creset%s"'
+alias ncls='printf "\033c"'
 #noglob to prevent zsh from interpretting the * as wildcard for the shell
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -139,4 +140,6 @@ source '/home/nikhil/google-cloud-sdk/completion.zsh.inc'
 # Support for command not found
 source '/etc/zsh_command_not_found'
 
+# added by Anaconda2 4.0.0 installer
+export PATH="/home/nikhil/anaconda2/bin:$PATH"
 alias howp='how2 -l python'
