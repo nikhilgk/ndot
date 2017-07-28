@@ -106,9 +106,9 @@ function prompt_steeef_setup {
   zstyle ':vcs_info:*:prompt:*' formats       "${fmt_branch}"
   zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
-  PROMPT="
-${__PROMPT_STEEEF_COLORS[3]}%n%f at ${__PROMPT_STEEEF_COLORS[2]}%m%f in ${__PROMPT_STEEEF_COLORS[5]}%~%f "'${vcs_info_msg_0_}'"
-"'$(virtualenv_info)'"$ "
+#  PROMPT="%B${__PROMPT_STEEEF_COLORS[3]}%n%f@${__PROMPT_STEEEF_COLORS[2]}%m%f:${__PROMPT_STEEEF_COLORS[5]}%~%f%b "'${vcs_info_msg_0_}'""'$(virtualenv_info)'"$ "
+
+  PROMPT="%B${__PROMPT_STEEEF_COLORS[3]}%n%f@${__PROMPT_STEEEF_COLORS[2]}%m%f:${__PROMPT_STEEEF_COLORS[5]}%~%f%b"'${vcs_info_msg_0_}'"$ "
 }
 
 prompt_steeef_setup "$@"
