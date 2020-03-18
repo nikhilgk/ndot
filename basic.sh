@@ -1,5 +1,5 @@
 stow nano
 stow tmux
 stow zsh
-stow bash
+#Ystow bash
 stow git
