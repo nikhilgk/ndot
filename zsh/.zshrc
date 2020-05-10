@@ -129,6 +129,7 @@ alias nkill='killall -9'
 alias sshpw='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no '
 alias gitlog='noglob git log --abbrev-commit   --branches=* --graph --decorate --pretty=format:"%Cgreen%h %Creset%ar %Cgreen%aD  %Cred%an %C(red)%d %Creset%s"'
 alias ncls='printf "\033c"'
+alias nedit=~/ndot/textadept/textadept-curses
 #noglob to prevent zsh from interpretting the * as wildcard for the shell
 
 # The next line updates PATH for the Google Cloud SDK.
