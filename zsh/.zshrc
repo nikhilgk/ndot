@@ -144,3 +144,5 @@ source '/etc/zsh_command_not_found'
 # added by Anaconda2 4.0.0 installer
 export PATH="/home/nikhil/anaconda2/bin:$PATH"
 alias howp='how2 -l python'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
