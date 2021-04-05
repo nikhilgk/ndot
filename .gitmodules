@@ -40,5 +40,8 @@
 [submodule "zsh/.zsh/modules/docker/external"]
 	path = zsh/.zsh/modules/docker/external
 	url = https://github.com/felixr/docker-zsh-completion.git
+[submodule "fzf"]
+	path = zsh/.zsh/modules/docker/external
+	url = https://github.com/junegunn/fzf.git
 
   
