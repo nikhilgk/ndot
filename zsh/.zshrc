@@ -141,8 +141,22 @@ alias nedit=~/ndot/textadept/textadept-curses
 # Support for command not found
 source '/etc/zsh_command_not_found'
 
-# added by Anaconda2 4.0.0 installer
-export PATH="/home/nikhil/anaconda2/bin:$PATH"
 alias howp='how2 -l python'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/data/home/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/data/home/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/data/home/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/data/home/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
