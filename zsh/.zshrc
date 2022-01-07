@@ -164,5 +164,15 @@ export FZF_DEFAULT_OPTS='--height 100% --layout=reverse --border'
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
-alias vpnc="otp 11; gpg --no-verbose  -q -d ~/.ssh/vpnpw.gpg | xclip -selection c;openvpn3  session-start --config /data/home/nikhil/.ssh/sedai.ovpn;"
+alias vpnc="otp 11; gpg --no-verbose  -q -d ~/.ssh/vpnpw.gpg | xclip -selection c;openvpn3  session-start --config /data/home/nikhil/.ssh/sedai.ovpn;printf '' | xclip;"
 alias vpnd="openvpn3  sessions-list | grep "Path:" | tr -s ' ' | cut -d ' ' -f 3 | xargs openvpn3 session-manage --disconnect --path"
+
+
+gitwip(){
+    HASH=`git log --date=format:'%y-%m-%d %H%M' --pretty=format:'%Cred%H %Cgreen%cd %Creset%s %C(bold blue)<%an>%Creset %C(yellow)%d%Creset' "$@"  | rg -v ' nt <' | cut -f1 -d' ' | tail -n 1`
+    git reset --soft $HASH
+}
+
+gitnt(){
+    git add -A && git commit -m "nt"
+}
