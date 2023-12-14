@@ -147,14 +147,14 @@ alias howp='how2 -l python'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/data/home/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/nikhil/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/data/home/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/data/home/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/nikhil/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/nikhil/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/data/home/anaconda3/bin:$PATH"
+        export PATH="/home/nikhil/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -184,3 +184,37 @@ gitwip(){
 gitnt(){
     git add -A && git commit -m "nt"
 }
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
+#For application paths
+XDG_DATA_DIRS="/home/nikhil/.local/share:$XDG_DATA_DIRS"
+
+#Forgit
+source /home/nikhil/ndot/forgit.sh
+
+
+#Deno
+export DENO_INSTALL="/home/nikhil/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+PATH="$PATH:/usr/local/go/bin:/home/nikhil/.cargo/bin"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+export JIRA_API_TOKEN=eOpwlHfz7lis3lRW1JP0DBB6
+export PYTHONDONTWRITEBYTECODE=true
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/path.zsh.inc' ]; then . '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/completion.zsh.inc' ]; then . '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/completion.zsh.inc'; fi
+
+# alias vpnc="otp 11; gpg --no-verbose  -q -d ~/.ssh/vpnpw.gpg | xclip -selection c;openvpn3  session-start --config /home/nikhil/.ssh/sedai.ovpn;printf '' | xclip;"
+
+
