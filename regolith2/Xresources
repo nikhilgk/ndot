@@ -1,0 +1,8 @@
+i3-wm.program.files: nemo
+i3-wm.program.1: /home/nikhil/.screenlayout/display.sh
+i3-wm.program.2: guake
+xi3-wm.program.3: sleep 10 & alttab -fg "#d58681" -bg "#4a4a4a" -frame "#eb564d" -t 128x150 -i 127x64 -d 1
+i3-wm.workspace.layout: tabbed
+i3-wm.program.lock: xdg-screensaver lock
+i3-wm.program.lockX: /usr/bin/i3lock
+regolith.wallpaper.file: /home/nikhil/Pictures/wallpapers/WIEtPZs.jpg
