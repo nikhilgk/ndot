@@ -12,9 +12,22 @@ fi
 
 eval "host=\$$#"
 MDIR=~/remote/$host 
-fusermount -u $MDIR
-mkdir -p $MDIR
-sshfs -o cache=yes -o kernel_cache -o compression=yes -o large_read -o Ciphers=arcfour $host:/ $MDIR
+# Create the mount directory if it doesn't exist
+mkdir -p ~/remote
+
+if [ -d "$MDIR" ]; then
+    echo "Directory $MDIR exists."
+    # unmout the directory if it is already mounted
+    if mountpoint -q -- "$MDIR"; then
+        echo "Directory $MDIR is already mounted"
+        fusermount -u $MDIR
+    fi
+
+else 
+    echo "Directory $MDIR does not exists."
+    mkdir -p $MDIR
+fi
+sshfs -o cache=yes -o kernel_cache -o compression=yes -o follow_symlinks  -o reconnect $host: $MDIR
 while getopts ":esn" opt; do
   case $opt in
     e)
