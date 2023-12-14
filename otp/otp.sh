@@ -21,5 +21,15 @@ else
 fi
 # gpg --no-verbose  -q -d $dir_path/secrets.gpg | jq  ".[$selection ]"
 otp=`gpg --no-verbose  -q -d $dir_path/secrets.gpg | jq  ".[$selection ].totpSecret" | xargs oathtool --totp -b` 
-echo -n "$otp" | xclip -selection c
-echo  ">>>$otp<<<" |sed -r 's/(.{3})/\1 /g'
+
+# if a -v option is passed, print the otp to stdout and clipboard
+if [ "$2" != "-q" ]
+then
+    echo -n "$otp" | xclip -selection c
+    echo  ">>>$otp<<<" |sed -r 's/(.{3})/\1 /g'
+    # exit now
+    exit 0
+fi 
+    echo $otp
+
+

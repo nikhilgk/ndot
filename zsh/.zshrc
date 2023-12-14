@@ -164,7 +164,15 @@ export FZF_DEFAULT_OPTS='--height 100% --layout=reverse --border'
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
-alias vpnc="otp 11; gpg --no-verbose  -q -d ~/.ssh/vpnpw.gpg | xclip -selection c;openvpn3  session-start --config /data/home/nikhil/.ssh/sedai.ovpn;printf '' | xclip;"
+# alias vpnc="otp 11; gpg --no-verbose  -q -d ~/.ssh/vpnpw.gpg | xclip -selection c;openvpn3  session-start --config /home/nikhil/.ssh/sedai.ovpn;printf '' | xclip;"
+vpncp(){
+    # read the output of the command `otp 11 -q` into a variable
+    v_otp=$(otp 11 -q)
+    # decrypt the password file and store it to a variable
+    v_pw=$(gpg --no-verbose  -q -d ~/.ssh/vpnpw.gpg)
+    echo "nikhil@sedai.io\n$v_pw\n$v_otp" | openvpn3  session-start --config /home/nikhil/.ssh/sedai.ovpn
+
+}
 alias vpnd="openvpn3  sessions-list | grep "Path:" | tr -s ' ' | cut -d ' ' -f 3 | xargs openvpn3 session-manage --disconnect --path"
 
 
