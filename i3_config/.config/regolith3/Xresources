@@ -1,0 +1,28 @@
+wm.program.files: nemo
+wm.program.1: guake
+wm.workspace.layout: tabbed
+Xi3-wm.program.lock: xdg-screensaver lock
+Xi3-wm.program.lockX: /usr/bin/i3lock
+Xregolith.wallpaper.fileX: /home/nikhil/Pictures/wallpapers/WIEtPZs.jpg
+wm.client.focused.color.background:	#049AFF
+wm.client.focused.color.border:	#4C7899
+wm.client.focused.color.child_border:	#285577
+wm.client.focused.color.indicator:	#2E9EF4
+wm.client.focused.color.text:	#049AFF
+
+wm.client.unfocused.color.background:	#d4f9f0
+wm.client.unfocused.color.border:	#4C7899
+wm.client.unfocused.color.child_border:	#285577
+wm.client.unfocused.color.indicator:	#2E9EF4
+wm.client.unfocused.color.text:	#d4f9f0
+
+Xwm.bar.font:	BitstreamVeraSansMono Nerd Font 2
+Xfont pango:DejaVu Sans Mono 2 
+
+wm.binding.display: s
+wm.binding.launcher.app: d
+wm.bar.mode: hide
+
+!wm.carry_container_to_ws_key: Shiftregolith.look.path: /usr/share/regolith-look/default
+!regolith.look.path: /usr/share/regolith-look/default
+regolith.look.path: /usr/share/regolith-look/default
