@@ -139,7 +139,7 @@ alias nedit=~/ndot/textadept/textadept-curses
 #source '/home/nikhil/google-cloud-sdk/completion.zsh.inc'
 
 # Support for command not found
-source '/etc/zsh_command_not_found'
+# source '/etc/zsh_command_not_found'
 
 alias howp='how2 -l python'
 
@@ -161,8 +161,10 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export FZF_DEFAULT_OPTS='--height 100% --layout=reverse --border'
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+# source /usr/share/fzf/key-bindings.zsh
+# source /usr/share/fzf/completion.zsh
+source ~/ndot/fzf/shell/key-bindings.zsh
+source ~/ndot/fzf/shell/completion.zsh
 
 # alias vpnc="otp 11; gpg --no-verbose  -q -d ~/.ssh/vpnpw.gpg | xclip -selection c;openvpn3  session-start --config /home/nikhil/.ssh/sedai.ovpn;printf '' | xclip;"
 vpncp(){
@@ -170,7 +172,7 @@ vpncp(){
     v_otp=$(otp 11 -q)
     # decrypt the password file and store it to a variable
     v_pw=$(gpg --no-verbose  -q -d ~/.ssh/vpnpw.gpg)
-    echo "nikhil@sedai.io\n$v_pw\n$v_otp" | openvpn3  session-start --config /home/nikhil/.ssh/sedai.ovpn
+    echo "nikhil@sedai.io\n$v_pw\n$v_otp" | openvpn3 session-start --config /home/nikhil/.ssh/sedai.ovpn
 
 }
 alias vpnd="openvpn3  sessions-list | grep "Path:" | tr -s ' ' | cut -d ' ' -f 3 | xargs openvpn3 session-manage --disconnect --path"
@@ -191,8 +193,10 @@ export PATH="$HOME/.serverless/bin:$PATH"
 XDG_DATA_DIRS="/home/nikhil/.local/share:$XDG_DATA_DIRS"
 
 #Forgit
-source /home/nikhil/ndot/forgit.sh
+# source /home/nikhil/ndot/forgit.sh
 
+# autoload bash auto complete
+autoload -U +X bashcompinit && bashcompinit
 
 #Deno
 export DENO_INSTALL="/home/nikhil/.deno"
@@ -210,11 +214,19 @@ PATH="$PATH:/usr/local/go/bin:/home/nikhil/.cargo/bin"
 export JIRA_API_TOKEN=eOpwlHfz7lis3lRW1JP0DBB6
 export PYTHONDONTWRITEBYTECODE=true
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/path.zsh.inc' ]; then . '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/path.zsh.inc' ]; then . '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/completion.zsh.inc' ]; then . '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/completion.zsh.inc' ]; then . '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/completion.zsh.inc'; fi
 
 # alias vpnc="otp 11; gpg --no-verbose  -q -d ~/.ssh/vpnpw.gpg | xclip -selection c;openvpn3  session-start --config /home/nikhil/.ssh/sedai.ovpn;printf '' | xclip;"
 
 
+export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="/usr/bin/python3:$PATH:/opt/nvim-linux64/bin"
+
+# bindkey -s '^[q' 'gh copilot suggest -t shell\n'eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
