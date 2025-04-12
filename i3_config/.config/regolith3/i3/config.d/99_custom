@@ -1,0 +1,25 @@
+workspace_layout tabbed
+
+workspace 1 output virt-top-left
+workspace 2 output virt-top-left
+workspace 3 output virt-top-left
+
+workspace 4 output virt-bottom-left
+workspace 5 output virt-bottom-left
+workspace 6 output virt-bottom-left
+
+workspace 7 output virt-right
+workspace 8 output virt-right
+workspace 9 output virt-right
+
+
+#bindsym $mod+Ctrl+q move workspace to output virt-top-left
+#bindsym $mod+Ctrl+z move workspace to output virt-bottom-left
+#bindsym $mod+Ctrl+x move workspace to output virt-right
+
+#bindsym $mod+Ctrl+q move container to output virt-top-left
+#bindsym $mod+Ctrl+z move container to output virt-bottom-left
+#bindsym $mod+Ctrl+x move container to output virt-right
+
+bindsym F4 exec rofi -modi "Links:~/.config/rofi/custom.sh" -show Links
+exec_always --no-startup-id /home/nikhil/.config/polybar/launch.sh
