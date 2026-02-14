@@ -1,0 +1,7 @@
+# Ignore plugins managed by TPM
+plugins/*
+!plugins/tpm/
+!plugins/.gitignore
+
+# Ignore session saves
+resurrect/
