@@ -22,4 +22,22 @@ workspace 9 output virt-right
 #bindsym $mod+Ctrl+x move container to output virt-right
 
 bindsym F4 exec rofi -modi "Links:~/.config/rofi/custom.sh" -show Links
-exec_always --no-startup-id /home/nikhil/.config/polybar/launch.sh
+exec_always --no-startup-id /home/nikhil/.config/polybar/launch.sh 
+
+# Ctrl shift D should run i3-msg 'floating toggle, resize set 2880 1620, move position 0 0'
+#bindsym $mod+Shift+d exec i3-msg 'floating toggle, resize set 2880 1620, move position 0 0'
+
+
+bindsym $mod+m layout tabbed
+
+smart_gaps inverse_outer
+
+focus_follows_mouse yes
+
+bar {
+    mode invisible
+    status_command i3status
+    position bottom
+}
+
+bindsym F12 exec --no-startup-id /home/nikhil/ndot/i3_config/.config/regolith3/i3/config.d/launch_tmuxcc.sh

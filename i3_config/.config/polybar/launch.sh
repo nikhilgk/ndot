@@ -17,10 +17,18 @@ killall -q polybar
 # echo "Bars launched..."
 
 
-if type "xrandr"; then
-  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload mobile &
-  done
-else
-  polybar --reload mobile &
-fi
+# if type "xrandr"; then
+#   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+#     echo "Launching bar on $m"
+#     MONITOR=$m polybar --reload mobile &
+#   done
+# else
+#     echo "Launching bar on"
+#   polybar --reload mobile &
+# fi
+MONITOR=virt-top-left polybar --reload mobile &
+MONITOR=virt-bottom-left polybar --reload mobile &
+MONITOR=virt-right polybar --reload mobile &
+MONITOR=eDP polybar --reload mobile &
+# MONITOR=DisplayPort-2 polybar --reload mobile &
+MONITOR=DisplayPort-1 polybar --reload mobile &

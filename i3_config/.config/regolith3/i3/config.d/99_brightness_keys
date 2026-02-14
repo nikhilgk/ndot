@@ -1,0 +1,3 @@
+# Custom keybindings for screen brightness
+bindsym XF86MonBrightnessUp exec /usr/local/bin/brightness.sh up
+bindsym XF86MonBrightnessDown exec /usr/local/bin/brightness.sh down

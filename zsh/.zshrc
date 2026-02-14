@@ -230,3 +230,20 @@ eval "$(gh copilot alias -- zsh)"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/nikhil/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# pnpm
+export PNPM_HOME="/home/nikhil/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export GEMINI_API_KEY="***REDACTED***"
+
+nvm install v22.19.0
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/nikhil/.local/share/flatpak/exports/share"

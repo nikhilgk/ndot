@@ -26,3 +26,6 @@ wm.bar.mode: hide
 !wm.carry_container_to_ws_key: Shiftregolith.look.path: /usr/share/regolith-look/default
 !regolith.look.path: /usr/share/regolith-look/default
 regolith.look.path: /usr/share/regolith-look/default
+
+wm.gaps.inner.size: 2
+wm.gaps.outer.size: 2

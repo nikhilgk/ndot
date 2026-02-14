@@ -18,3 +18,4 @@ source "$DOTZSH/env.zsh"
 
 # Customize to your needs...
 
+. "$HOME/.cargo/env"

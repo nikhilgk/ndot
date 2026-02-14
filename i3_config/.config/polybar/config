@@ -59,14 +59,14 @@
 
 	;font-2 = fixed:pixelsize=10;1
 	;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-	font-0 = siji:pixelsize=10;1
+	font-0 = "siji:pixelsize=15;1"
 
 	;modules-left = bspwm i3
 	modules-left = i3
 	;modules-center = mpd
 	;modules-right = filesystem backlight-acpi alsa pulseaudio xkeyboard memory cpu wlan temperature date powermenu
 	;modules-right = backlight-acpi pulseaudio  memory cpu temperature wlan eth  battery date powermenu
-	modules-right = backlight-acpi pulseaudio  memory cpu temperature battery date powermenu
+	modules-right = backlight-acpi pulseaudio mic-script memory cpu temperature battery date powermenu
 
 	tray-position = right
 	tray-padding = 2
@@ -254,47 +254,19 @@
 [module/date]
 	type = internal/date
 	interval = 5
+    date = %a, %d %b %H:%M
+    time = %H:%M
+    date-alt = %A, %d %B %Y  %H:%M
+    time-alt = %H:%M:%S
 
-	date =
-	date-alt = " %Y-%m-%d"
 
-	time = %H:%M
-	time-alt = %H:%M:%S
 
-	format-prefix = 
-	format-prefix-foreground = ${colors.foreground-alt}
-	format-underline = #0a6cf5
-
-	label = %date% %time%
-
-	;hidden = true
-
-[module/pulseaudio]
-	type = internal/pulseaudio
-
-	format-volume = <label-volume> <bar-volume>
-	label-volume = VOL %percentage%%
-	label-volume-foreground = ${root.foreground}
-
-	label-muted = 🔇 muted
-	label-muted-foreground = #666
-
-	bar-volume-width = 10
-	bar-volume-foreground-0 = #55aa55
-	bar-volume-foreground-1 = #55aa55
-	bar-volume-foreground-2 = #55aa55
-	bar-volume-foreground-3 = #55aa55
-	bar-volume-foreground-4 = #55aa55
-	bar-volume-foreground-5 = #f5a70a
-	bar-volume-foreground-6 = #ff5555
-	bar-volume-gradient = false
-	bar-volume-indicator = |
-	bar-volume-indicator-font = 2
-	bar-volume-fill = -
-	bar-volume-fill-font = 2
-	bar-volume-empty = -
-	bar-volume-empty-font = 2
-	bar-volume-empty-foreground = ${colors.foreground-alt}
+[module/mic-script]
+    type = custom/script
+    exec = /home/nikhil/.config/polybar/mic_level.sh
+    interval = 2
+    click-left = amixer set Capture toggle
+	format-underline = #df79da
 
 [module/alsa]
 	type = internal/alsa
