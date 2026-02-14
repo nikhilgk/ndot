@@ -40,4 +40,4 @@ bar {
     position bottom
 }
 
-bindsym F12 exec --no-startup-id /home/nikhil/ndot/i3_config/.config/regolith3/i3/config.d/launch_tmuxcc.sh
+bindsym F12 exec --no-startup-id /home/nikhil/ndot/bin/launch_tmuxcc.sh

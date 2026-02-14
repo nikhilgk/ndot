@@ -1,0 +1,4 @@
+# Ignore plugins managed by TPM
+*
+!.gitignore
+!tpm/
