@@ -145,19 +145,22 @@ alias howp='how2 -l python'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/nikhil/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/nikhil/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/nikhil/anaconda3/etc/profile.d/conda.sh"
+# >>> conda initialize (lazy) >>>
+conda() {
+    unfunction conda
+    __conda_setup="$('/home/nikhil/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/home/nikhil/anaconda3/bin:$PATH"
+        if [ -f "/home/nikhil/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/nikhil/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/nikhil/anaconda3/bin:$PATH"
+        fi
     fi
-fi
-unset __conda_setup
+    unset __conda_setup
+    conda "$@"
+}
 # <<< conda initialize <<<
 
 export FZF_DEFAULT_OPTS='--height 100% --layout=reverse --border'
@@ -203,8 +206,16 @@ export DENO_INSTALL="/home/nikhil/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Lazy-load nvm: sourced on first call to nvm, node, npm, or npx
+_load_nvm() {
+    unset -f nvm node npm npx
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+nvm()  { _load_nvm; nvm "$@"; }
+node() { _load_nvm; node "$@"; }
+npm()  { _load_nvm; npm "$@"; }
+npx()  { _load_nvm; npx "$@"; }
 
 PATH="$PATH:/usr/local/go/bin:/home/nikhil/.cargo/bin"
 
@@ -225,11 +236,13 @@ export PYTHONDONTWRITEBYTECODE=true
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="/usr/bin/python3:$PATH:/opt/nvim-linux64/bin"
 
-# bindkey -s '^[q' 'gh copilot suggest -t shell\n'eval "$(gh copilot alias -- zsh)"
-eval "$(gh copilot alias -- zsh)"
+# Lazy-load gh copilot aliases (ghcs/ghce): initialized on first call
+ghcs() { unset -f ghcs ghce; eval "$(gh copilot alias -- zsh)"; ghcs "$@"; }
+ghce() { unset -f ghcs ghce; eval "$(gh copilot alias -- zsh)"; ghce "$@"; }
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+# Lazy-load pyenv: initialized on first call
+pyenv() { unset -f pyenv; eval "$(command pyenv init - zsh)"; pyenv "$@"; }
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/nikhil/.lmstudio/bin"
@@ -245,5 +258,8 @@ esac
 # pnpm end
 export GEMINI_API_KEY="***REDACTED***"
 
-nvm install v22.19.0
+# nvm install v22.19.0  # removed: was running on every shell open
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/nikhil/.local/share/flatpak/exports/share"
+
+# Disable terminal XOFF/XON so Ctrl+S works in editors (nvim save)
+[[ -t 0 ]] && stty -ixon 2>/dev/null
