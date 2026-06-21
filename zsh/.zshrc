@@ -222,7 +222,7 @@ PATH="$PATH:/usr/local/go/bin:/home/nikhil/.cargo/bin"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-export JIRA_API_TOKEN=***REDACTED***
+[ -f ~/.secrets.env ] && source ~/.secrets.env
 export PYTHONDONTWRITEBYTECODE=true
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/path.zsh.inc' ]; then . '/data/ws/sedai/sed.ai/chat/google-cloud-sdk/path.zsh.inc'; fi
@@ -256,7 +256,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-export GEMINI_API_KEY="***REDACTED***"
 
 # nvm install v22.19.0  # removed: was running on every shell open
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/nikhil/.local/share/flatpak/exports/share"
