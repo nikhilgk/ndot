@@ -130,6 +130,22 @@ alias sshpw='ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no
 alias gitlog='noglob git log --abbrev-commit   --branches=* --graph --decorate --pretty=format:"%Cgreen%h %Creset%ar %Cgreen%aD  %Cred%an %C(red)%d %Creset%s"'
 alias ncls='printf "\033c"'
 alias nedit=~/ndot/textadept/textadept-curses
+browsh() {
+  # Start headless Firefox with marionette + the browsh-prepared profile
+  # if it's not already running, then connect browsh to it.
+  if ! ss -tln 2>/dev/null | grep -q ':2828'; then
+    nohup /data/apps/firefox/firefox \
+      --marionette --headless -no-remote \
+      --profile "$HOME/.mozilla/firefox/browsh.default-release" \
+      >/tmp/browsh-firefox.log 2>&1 &
+    disown
+    for _ in {1..20}; do
+      ss -tln 2>/dev/null | grep -q ':2828' && break
+      sleep 0.5
+    done
+  fi
+  command browsh --firefox.use-existing "$@"
+}
 #noglob to prevent zsh from interpretting the * as wildcard for the shell
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -217,6 +233,16 @@ node() { _load_nvm; node "$@"; }
 npm()  { _load_nvm; npm "$@"; }
 npx()  { _load_nvm; npx "$@"; }
 
+# Put the default node on PATH immediately (cheap, no nvm sourcing) so editors
+# and LSP servers spawned outside an interactive shell (e.g. nvim/Mason) can
+# find node before the lazy-load above is triggered.
+if [[ -r "$NVM_DIR/alias/default" ]]; then
+    _nvm_def="$(<"$NVM_DIR/alias/default")"
+    [[ -d "$NVM_DIR/versions/node/$_nvm_def/bin" ]] && \
+        export PATH="$NVM_DIR/versions/node/$_nvm_def/bin:$PATH"
+    unset _nvm_def
+fi
+
 PATH="$PATH:/usr/local/go/bin:/home/nikhil/.cargo/bin"
 
 # Generated for envman. Do not edit.
@@ -262,3 +288,9 @@ export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/nikhil
 
 # Disable terminal XOFF/XON so Ctrl+S works in editors (nvim save)
 [[ -t 0 ]] && stty -ixon 2>/dev/null
+
+# tmux socket dir is intentionally NOT overridden here. Setting TMUX_TMPDIR in
+# .zshrc (interactive-only) made non-interactive shells/scripts/ssh use a
+# different socket dir, spawning duplicate tmux servers that never merged.
+# All shells now use the default /tmp/tmux-$UID (see unset in .zshenv); the
+# socket is protected from cleanup by /etc/tmpfiles.d/tmux.conf.
